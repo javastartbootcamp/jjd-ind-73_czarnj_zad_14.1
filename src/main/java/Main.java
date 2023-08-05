@@ -1,4 +1,3 @@
-import java.awt.image.ImagingOpException;
 import java.io.*;
 import java.util.Map;
 import java.util.TreeMap;
@@ -19,10 +18,11 @@ public class Main {
             while ((nextLine = br.readLine()) != null) {
                 int number = Integer.parseInt(nextLine);
                 if (!countedNumbers.containsKey(number)) {
-                    countedNumbers.put(number, 0);
+                    countedNumbers.put(number, 1);
+                } else {
+                    int amount = countedNumbers.get(number);
+                    countedNumbers.put(number, ++amount);
                 }
-                int amount = countedNumbers.get(number);
-                countedNumbers.put(number, ++amount);
             }
         } catch (IOException ex) {
             throw new UncheckedIOException(ex);
